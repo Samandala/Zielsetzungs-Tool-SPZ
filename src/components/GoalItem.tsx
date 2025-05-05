@@ -1,6 +1,7 @@
 
 import React from 'react';
-import { Check } from 'lucide-react';
+import { Check, ChevronRight } from 'lucide-react';
+import { Progress } from '@/components/ui/progress';
 
 export interface Goal {
   id: string;
@@ -8,6 +9,7 @@ export interface Goal {
   category: 'fitness' | 'nutrition' | 'mental';
   progress: number;
   icon: string;
+  frequency?: string;
 }
 
 interface GoalItemProps {
@@ -35,25 +37,36 @@ const GoalItem: React.FC<GoalItemProps> = ({ goal, onUpdateProgress }) => {
   };
 
   return (
-    <div className="flex items-center gap-4 mb-4">
-      <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white ${getColorByCategory()}`}>
-        {goal.icon}
+    <div className="bg-white rounded-xl p-4 shadow-sm">
+      <div className="flex items-center justify-between mb-2">
+        <div className="flex items-center gap-2">
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white ${getColorByCategory()}`}>
+            {goal.icon}
+          </div>
+          <div>
+            <h3 className="font-medium text-foreground">{goal.title}</h3>
+            {goal.frequency && (
+              <p className="text-xs text-muted-foreground">{goal.frequency}</p>
+            )}
+          </div>
+        </div>
+        <div className="flex items-center">
+          <span className="mr-1 font-medium text-sm">
+            {goal.progress}%
+          </span>
+          <ChevronRight size={16} className="text-muted-foreground" />
+        </div>
       </div>
-      <div className="flex-1 relative">
+      
+      <div className="flex items-center gap-2">
+        <Progress value={goal.progress} className="h-2 flex-1" />
         <input
           type="range"
           min="0"
           max="100"
           value={goal.progress}
           onChange={handleProgressChange}
-          className="w-full h-6 rounded-full appearance-none cursor-pointer"
-          style={{
-            background: `linear-gradient(to right, ${
-              goal.category === 'fitness' ? '#4361EE' : 
-              goal.category === 'nutrition' ? '#2ECC71' : 
-              '#9B5DE5'
-            } ${goal.progress}%, #e0e0e0 ${goal.progress}%)`,
-          }}
+          className="sr-only"
         />
       </div>
     </div>

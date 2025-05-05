@@ -19,6 +19,7 @@ const Index = () => {
       category: 'fitness',
       progress: 75,
       icon: '🏋️',
+      frequency: '3x pro Woche',
     },
     {
       id: '2',
@@ -26,6 +27,7 @@ const Index = () => {
       category: 'nutrition',
       progress: 40,
       icon: '🍎',
+      frequency: 'Täglich',
     },
     {
       id: '3',
@@ -33,6 +35,15 @@ const Index = () => {
       category: 'mental',
       progress: 60,
       icon: '🧠',
+      frequency: '4x pro Woche',
+    },
+    {
+      id: '4',
+      title: 'Dehnübungen',
+      category: 'fitness',
+      progress: 85,
+      icon: '🧘',
+      frequency: 'Täglich',
     }
   ]);
 
@@ -57,6 +68,20 @@ const Index = () => {
       <Header />
       
       <main className="container px-4 mx-auto pb-24">
+        <div className="p-4 mt-4 bg-white rounded-xl shadow-sm">
+          <div className="flex justify-between items-center">
+            <div>
+              <h3 className="font-bold">Durchschnittlicher Fortschritt</h3>
+              <p className="text-3xl font-bold text-primary">
+                {Math.round(goals.reduce((acc, goal) => acc + goal.progress, 0) / goals.length)}%
+              </p>
+            </div>
+            <div className="w-16 h-16 rounded-full border-4 border-primary flex items-center justify-center">
+              <span className="text-xl font-bold text-primary">{goals.length}/5</span>
+            </div>
+          </div>
+        </div>
+        
         <GoalsList 
           goals={goals} 
           onUpdateProgress={handleUpdateProgress}
@@ -97,6 +122,16 @@ const Index = () => {
                 <option value="nutrition">Ernährung</option>
                 <option value="mental">Mental</option>
               </select>
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <label htmlFor="frequency" className="text-right">
+                Häufigkeit
+              </label>
+              <Input
+                id="frequency"
+                placeholder="z.B. 3x pro Woche"
+                className="col-span-3"
+              />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <label htmlFor="icon" className="text-right">

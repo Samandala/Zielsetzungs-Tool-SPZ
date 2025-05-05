@@ -1,8 +1,9 @@
 
 import React from 'react';
 import GoalItem, { Goal } from './GoalItem';
-import { Plus, Dumbbell, Brain } from 'lucide-react';
+import { Plus, BarChart2, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 interface GoalsListProps {
   goals: Goal[];
@@ -25,11 +26,33 @@ const GoalsList: React.FC<GoalsListProps> = ({ goals, onUpdateProgress, onAddGoa
         </Button>
       </div>
       
-      <div className="space-y-4">
-        {goals.map((goal) => (
-          <GoalItem key={goal.id} goal={goal} onUpdateProgress={onUpdateProgress} />
-        ))}
-      </div>
+      <Tabs defaultValue="progress">
+        <TabsList className="grid grid-cols-3 mb-4">
+          <TabsTrigger value="progress">Fortschritt</TabsTrigger>
+          <TabsTrigger value="calendar">Kalender</TabsTrigger>
+          <TabsTrigger value="trends">Trends</TabsTrigger>
+        </TabsList>
+        
+        <TabsContent value="progress" className="space-y-4">
+          {goals.map((goal) => (
+            <GoalItem key={goal.id} goal={goal} onUpdateProgress={onUpdateProgress} />
+          ))}
+        </TabsContent>
+        
+        <TabsContent value="calendar">
+          <div className="h-48 flex items-center justify-center bg-white rounded-xl">
+            <Calendar className="w-8 h-8 text-muted-foreground" />
+            <p className="ml-2 text-muted-foreground">Kalenderansicht</p>
+          </div>
+        </TabsContent>
+        
+        <TabsContent value="trends">
+          <div className="h-48 flex items-center justify-center bg-white rounded-xl">
+            <BarChart2 className="w-8 h-8 text-muted-foreground" />
+            <p className="ml-2 text-muted-foreground">Trendansicht</p>
+          </div>
+        </TabsContent>
+      </Tabs>
     </section>
   );
 };

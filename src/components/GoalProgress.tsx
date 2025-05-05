@@ -1,7 +1,8 @@
 
 import React from 'react';
-import { Check } from 'lucide-react';
+import { Check, Calendar, CalendarCheck } from 'lucide-react';
 import { Goal } from './GoalItem';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 interface GoalProgressProps {
   goals: Goal[];
@@ -15,9 +16,33 @@ const GoalProgress: React.FC<GoalProgressProps> = ({ goals }) => {
     { title: "Kognitive Übungen", completedSteps: 2, totalSteps: 4 },
   ];
   
+  // Calculate days for streak display
+  const currentStreak = 5;
+  const bestStreak = 12;
+  
   return (
     <section className="mt-8">
       <h2 className="text-2xl font-bold text-primary mb-4">Fortschritt</h2>
+      
+      <div className="grid grid-cols-2 gap-4 mb-6">
+        <Card className="bg-white shadow-sm">
+          <CardContent className="p-4 flex flex-col items-center justify-center">
+            <Calendar className="h-6 w-6 text-primary mb-1" />
+            <p className="text-sm text-muted-foreground">Aktuelle Serie</p>
+            <p className="text-2xl font-bold">{currentStreak}</p>
+            <p className="text-xs text-muted-foreground">Tage</p>
+          </CardContent>
+        </Card>
+        
+        <Card className="bg-white shadow-sm">
+          <CardContent className="p-4 flex flex-col items-center justify-center">
+            <CalendarCheck className="h-6 w-6 text-primary mb-1" />
+            <p className="text-sm text-muted-foreground">Beste Serie</p>
+            <p className="text-2xl font-bold">{bestStreak}</p>
+            <p className="text-xs text-muted-foreground">Tage</p>
+          </CardContent>
+        </Card>
+      </div>
       
       <div className="space-y-4">
         {progressSteps.map((step, index) => (
