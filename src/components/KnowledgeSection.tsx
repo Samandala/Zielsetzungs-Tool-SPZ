@@ -13,23 +13,23 @@ const KnowledgeSection: React.FC = () => {
         <div className="bg-white rounded-full p-3 shadow-lg max-w-xs mx-auto aspect-square overflow-hidden border-4 border-green-100">
           <div className="relative w-full h-full rounded-full overflow-hidden">
             <img 
-              src="/public/lovable-uploads/f7573740-ec49-4d25-ab9b-350f1f74c6f5.png" 
+              src="/lovable-uploads/5b7b8bf5-835a-4f0e-84b1-5df4fc739551.png" 
               alt="Tellermodell" 
               className="w-full h-full object-cover"
             />
             
-            {/* Add button on left edge (vegetables) */}
-            <button className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 bg-green-700 rounded-full p-1.5 shadow-md z-10">
+            {/* Add button on left side (vegetables) */}
+            <button className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 bg-green-800 rounded-full p-1.5 shadow-md z-10">
               <Plus className="w-5 h-5 text-white" />
             </button>
             
-            {/* Add button on top right edge (carbs) */}
-            <button className="absolute top-0 right-1/4 -translate-y-1/2 bg-green-700 rounded-full p-1.5 shadow-md z-10">
+            {/* Add button on top (carbs) */}
+            <button className="absolute top-0 right-1/4 -translate-y-1/2 bg-green-800 rounded-full p-1.5 shadow-md z-10">
               <Plus className="w-5 h-5 text-white" />
             </button>
             
-            {/* Add button on bottom right edge (protein) */}
-            <button className="absolute bottom-0 right-1/4 translate-y-1/2 bg-green-700 rounded-full p-1.5 shadow-md z-10">
+            {/* Add button on bottom right (protein) */}
+            <button className="absolute bottom-0 right-1/4 translate-y-1/2 bg-green-800 rounded-full p-1.5 shadow-md z-10">
               <Plus className="w-5 h-5 text-white" />
             </button>
           </div>
