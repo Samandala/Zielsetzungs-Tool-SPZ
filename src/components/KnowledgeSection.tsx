@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Plus, Salad, Wheat, Beef } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -11,39 +11,26 @@ const KnowledgeSection: React.FC = () => {
       
       <div className="relative mb-6">
         <div className="bg-white rounded-full p-3 shadow-lg max-w-full mx-auto aspect-square overflow-hidden border-4 border-green-100">
-          <div className="w-full h-full rounded-full overflow-hidden grid grid-cols-2 grid-rows-2 relative">
-            {/* Vegetables and Fruits - Green section (50%) */}
-            <div className="relative bg-green-100 flex items-center justify-center col-span-2">
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-2">
-                <Salad className="w-10 h-10 text-green-800 mb-1" />
-                <p className="text-xs font-medium text-green-800">Gemüse & Obst</p>
-              </div>
-              <button className="absolute bottom-2 right-2 bg-white rounded-full p-1 shadow-md z-10">
-                <Plus className="w-4 h-4 text-primary" />
-              </button>
-            </div>
+          {/* Use the image */}
+          <div className="relative w-full h-full rounded-full overflow-hidden">
+            <img 
+              src="/public/lovable-uploads/3a2d0022-95c2-46cb-aa45-5f6c5f06b791.png" 
+              alt="Tellermodell" 
+              className="w-full h-full object-cover"
+            />
             
-            {/* Carbohydrates - Yellow section (25%) */}
-            <div className="relative bg-yellow-100 flex items-center justify-center">
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-2">
-                <Wheat className="w-10 h-10 text-yellow-700 mb-1" />
-                <p className="text-xs font-medium text-yellow-700">Kohlenhydrate</p>
-              </div>
-              <button className="absolute bottom-2 right-2 bg-white rounded-full p-1 shadow-md z-10">
-                <Plus className="w-4 h-4 text-primary" />
-              </button>
-            </div>
+            {/* Add button on top of image */}
+            <button className="absolute bottom-6 left-6 bg-green-700 rounded-full p-1.5 shadow-md z-10">
+              <Plus className="w-5 h-5 text-white" />
+            </button>
             
-            {/* Protein - Pink section (25%) */}
-            <div className="relative bg-pink-100 flex items-center justify-center">
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-2">
-                <Beef className="w-10 h-10 text-pink-700 mb-1" />
-                <p className="text-xs font-medium text-pink-700">Proteine</p>
-              </div>
-              <button className="absolute top-2 right-2 bg-white rounded-full p-1 shadow-md z-10">
-                <Plus className="w-4 h-4 text-primary" />
-              </button>
-            </div>
+            <button className="absolute top-6 right-6 bg-green-700 rounded-full p-1.5 shadow-md z-10">
+              <Plus className="w-5 h-5 text-white" />
+            </button>
+            
+            <button className="absolute bottom-6 right-6 bg-green-700 rounded-full p-1.5 shadow-md z-10">
+              <Plus className="w-5 h-5 text-white" />
+            </button>
           </div>
         </div>
       </div>

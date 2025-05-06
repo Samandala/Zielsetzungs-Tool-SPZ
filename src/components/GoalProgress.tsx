@@ -20,9 +20,26 @@ const GoalProgress: React.FC<GoalProgressProps> = ({ goals }) => {
   const currentStreak = 5;
   const bestStreak = 12;
   
+  // Calculate average progress
+  const averageProgress = Math.round(goals.reduce((acc, goal) => acc + goal.progress, 0) / goals.length);
+  
   return (
     <section className="mt-8">
-      <h2 className="text-2xl font-bold text-primary mb-4">Fortschritt</h2>
+      <h2 className="text-2xl font-bold text-primary mb-4">Mein Fortschritt</h2>
+      
+      <div className="bg-white rounded-xl p-4 shadow-sm mb-6">
+        <div className="flex justify-between items-center">
+          <div>
+            <h3 className="font-bold">Durchschnittlicher Fortschritt</h3>
+            <p className="text-3xl font-bold text-primary">
+              {averageProgress}%
+            </p>
+          </div>
+          <div className="w-16 h-16 rounded-full border-4 border-primary flex items-center justify-center">
+            <span className="text-xl font-bold text-primary">{goals.length}/5</span>
+          </div>
+        </div>
+      </div>
       
       <div className="grid grid-cols-2 gap-4 mb-6">
         <Card className="bg-white shadow-sm">

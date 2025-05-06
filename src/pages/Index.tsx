@@ -4,18 +4,17 @@ import Header from '../components/Header';
 import GoalsList from '../components/GoalsList';
 import GoalProgress from '../components/GoalProgress';
 import KnowledgeSection from '../components/KnowledgeSection';
-import { Dumbbell, Brain } from 'lucide-react';
+import { Coffee } from 'lucide-react';
 import { Goal } from '../components/GoalItem';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Select } from '@/components/ui/select';
 
 const Index = () => {
   const [goals, setGoals] = useState<Goal[]>([
     {
       id: '1',
-      title: 'Kraft aufbauen',
+      title: 'Wenn ich um 8 Uhr mein Frühstück gegessen habe, dann mache ich 10 Minuten Krafttraining mit dem Theraband',
       category: 'fitness',
       progress: 75,
       icon: '🏋️',
@@ -23,7 +22,7 @@ const Index = () => {
     },
     {
       id: '2',
-      title: 'Gesunde Ernährung',
+      title: 'Ich esse an mindestens 5 von 7 Tagen zum Mittagessen eine Gemüseportion nach dem Tellermodell.',
       category: 'nutrition',
       progress: 40,
       icon: '🍎',
@@ -31,19 +30,19 @@ const Index = () => {
     },
     {
       id: '3',
-      title: 'Konzentration verbessern',
+      title: 'Ich trinke diese Woche keine Süssgetränke, sondern nur Wasser oder ungesüssten Tee.',
       category: 'mental',
       progress: 60,
-      icon: '🧠',
+      icon: '☕',
       frequency: '4x pro Woche',
     },
     {
       id: '4',
-      title: 'Dehnübungen',
+      title: 'Ich probiere diese Woche eine neue Sportart aus dem SPZ-Angebot',
       category: 'fitness',
       progress: 85,
       icon: '🧘',
-      frequency: 'Täglich',
+      frequency: 'Diese Woche',
     }
   ]);
 
@@ -68,20 +67,6 @@ const Index = () => {
       <Header />
       
       <main className="container px-4 mx-auto pb-24">
-        <div className="p-4 mt-4 bg-white rounded-xl shadow-sm">
-          <div className="flex justify-between items-center">
-            <div>
-              <h3 className="font-bold">Durchschnittlicher Fortschritt</h3>
-              <p className="text-3xl font-bold text-primary">
-                {Math.round(goals.reduce((acc, goal) => acc + goal.progress, 0) / goals.length)}%
-              </p>
-            </div>
-            <div className="w-16 h-16 rounded-full border-4 border-primary flex items-center justify-center">
-              <span className="text-xl font-bold text-primary">{goals.length}/5</span>
-            </div>
-          </div>
-        </div>
-        
         <GoalsList 
           goals={goals} 
           onUpdateProgress={handleUpdateProgress}
@@ -140,7 +125,7 @@ const Index = () => {
               <div className="col-span-3 flex gap-2">
                 <Button variant="outline" size="icon">🏋️</Button>
                 <Button variant="outline" size="icon">🍎</Button>
-                <Button variant="outline" size="icon">🧠</Button>
+                <Button variant="outline" size="icon">☕</Button>
                 <Button variant="outline" size="icon">🧘</Button>
               </div>
             </div>
