@@ -15,14 +15,7 @@ interface GoalsListProps {
 const GoalsList: React.FC<GoalsListProps> = ({ goals, onUpdateProgress, onAddGoal }) => {
   return (
     <section className="mt-6">
-      {/* Motivation quote */}
-      <div className="mb-6 p-4 bg-white rounded-xl shadow-sm border-l-4 border-accent">
-        <p className="text-sm italic text-foreground">
-          "Jede Bewegung bringt dich deinem neuen Ich näher - egal wie klein der Schritt ist."
-        </p>
-      </div>
-      
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center mb-3">
         <h2 className="text-2xl font-bold text-primary">Meine Ziele</h2>
         <Button 
           onClick={onAddGoal} 
@@ -32,6 +25,13 @@ const GoalsList: React.FC<GoalsListProps> = ({ goals, onUpdateProgress, onAddGoa
         >
           <Plus size={18} />
         </Button>
+      </div>
+      
+      {/* Motivation quote */}
+      <div className="mb-6 p-4 bg-white rounded-xl shadow-sm border-l-4 border-accent">
+        <p className="text-sm italic text-foreground">
+          "Jede Bewegung bringt dich deinem neuen Ich näher - egal wie klein der Schritt ist."
+        </p>
       </div>
       
       <Tabs defaultValue="progress">
@@ -95,22 +95,22 @@ const GoalsList: React.FC<GoalsListProps> = ({ goals, onUpdateProgress, onAddGoa
                 <div>
                   <div className="flex justify-between text-sm mb-1">
                     <span>Tagesbedarf</span>
-                    <span>2500 kcal</span>
+                    <span>1600 kcal</span>
                   </div>
                   <div className="flex justify-between text-sm mb-1">
                     <span>Bereits gegessen</span>
-                    <span>1800 kcal</span>
+                    <span>1100 kcal</span>
                   </div>
                   <div className="flex justify-between text-sm font-semibold">
                     <span>Noch verfügbar</span>
-                    <span>700 kcal</span>
+                    <span>500 kcal</span>
                   </div>
                 </div>
                 
                 <div className="w-full bg-muted h-4 rounded-full overflow-hidden">
                   <div 
                     className="h-full bg-primary"
-                    style={{ width: '72%' }}
+                    style={{ width: '68%' }}
                   ></div>
                 </div>
                 

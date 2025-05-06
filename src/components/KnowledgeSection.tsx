@@ -10,11 +10,11 @@ const KnowledgeSection: React.FC = () => {
       <h2 className="text-2xl font-bold text-primary mb-4">Wissen</h2>
       
       <div className="relative mb-6">
-        <div className="bg-white rounded-full p-3 shadow-lg max-w-full mx-auto aspect-square overflow-hidden border-4 border-green-100">
-          {/* Use the image */}
+        <div className="bg-white rounded-full p-3 shadow-lg max-w-xs mx-auto aspect-square overflow-hidden border-4 border-green-100">
+          {/* Use the image with improved quality */}
           <div className="relative w-full h-full rounded-full overflow-hidden">
             <img 
-              src="/public/lovable-uploads/3a2d0022-95c2-46cb-aa45-5f6c5f06b791.png" 
+              src="/public/lovable-uploads/611c651e-6471-423b-9893-95537ab25365.png" 
               alt="Tellermodell" 
               className="w-full h-full object-cover"
             />

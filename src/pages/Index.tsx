@@ -103,9 +103,10 @@ const Index = () => {
                 id="category"
                 className="col-span-3 flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
               >
-                <option value="fitness">Fitness</option>
-                <option value="nutrition">Ernährung</option>
-                <option value="mental">Mental</option>
+                <option value="sport">Sport</option>
+                <option value="ernährung">Ernährung</option>
+                <option value="wissen">Wissen</option>
+                <option value="motivation">Motivation</option>
               </select>
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
