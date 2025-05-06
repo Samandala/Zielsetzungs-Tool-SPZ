@@ -18,18 +18,18 @@ const KnowledgeSection: React.FC = () => {
               className="w-full h-full object-cover"
             />
             
-            {/* Add button on left side (vegetables) */}
-            <button className="absolute top-1/2 left-6 -translate-y-1/2 bg-green-700 rounded-full p-1.5 shadow-md z-10">
+            {/* Add button on left edge (vegetables) */}
+            <button className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 bg-green-700 rounded-full p-1.5 shadow-md z-10">
               <Plus className="w-5 h-5 text-white" />
             </button>
             
-            {/* Add button on top right (carbs) */}
-            <button className="absolute top-6 right-1/3 transform translate-x-1/2 bg-green-700 rounded-full p-1.5 shadow-md z-10">
+            {/* Add button on top right edge (carbs) */}
+            <button className="absolute top-0 right-1/4 -translate-y-1/2 bg-green-700 rounded-full p-1.5 shadow-md z-10">
               <Plus className="w-5 h-5 text-white" />
             </button>
             
-            {/* Add button on bottom right (protein) */}
-            <button className="absolute bottom-6 right-1/3 transform translate-x-1/2 bg-green-700 rounded-full p-1.5 shadow-md z-10">
+            {/* Add button on bottom right edge (protein) */}
+            <button className="absolute bottom-0 right-1/4 translate-y-1/2 bg-green-700 rounded-full p-1.5 shadow-md z-10">
               <Plus className="w-5 h-5 text-white" />
             </button>
           </div>

@@ -11,9 +11,9 @@ interface GoalProgressProps {
 const GoalProgress: React.FC<GoalProgressProps> = ({ goals }) => {
   // Calculate progress steps from goals
   const progressSteps = [
-    { title: "Beweglichkeit", completedSteps: 2, totalSteps: 4 },
+    { title: "Sport", completedSteps: 2, totalSteps: 4 },
     { title: "Ernährung", completedSteps: 3, totalSteps: 3 },
-    { title: "Kognitive Übungen", completedSteps: 2, totalSteps: 4 },
+    { title: "Wissen", completedSteps: 2, totalSteps: 4 },
   ];
   
   // Calculate days for streak display
