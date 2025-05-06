@@ -11,24 +11,25 @@ const KnowledgeSection: React.FC = () => {
       
       <div className="relative mb-6">
         <div className="bg-white rounded-full p-3 shadow-lg max-w-xs mx-auto aspect-square overflow-hidden border-4 border-green-100">
-          {/* Use the image with improved quality */}
           <div className="relative w-full h-full rounded-full overflow-hidden">
             <img 
-              src="/public/lovable-uploads/611c651e-6471-423b-9893-95537ab25365.png" 
+              src="/public/lovable-uploads/f7573740-ec49-4d25-ab9b-350f1f74c6f5.png" 
               alt="Tellermodell" 
               className="w-full h-full object-cover"
             />
             
-            {/* Add button on top of image */}
-            <button className="absolute bottom-6 left-6 bg-green-700 rounded-full p-1.5 shadow-md z-10">
+            {/* Add button on left side (vegetables) */}
+            <button className="absolute top-1/2 left-6 -translate-y-1/2 bg-green-700 rounded-full p-1.5 shadow-md z-10">
               <Plus className="w-5 h-5 text-white" />
             </button>
             
-            <button className="absolute top-6 right-6 bg-green-700 rounded-full p-1.5 shadow-md z-10">
+            {/* Add button on top right (carbs) */}
+            <button className="absolute top-6 right-1/3 transform translate-x-1/2 bg-green-700 rounded-full p-1.5 shadow-md z-10">
               <Plus className="w-5 h-5 text-white" />
             </button>
             
-            <button className="absolute bottom-6 right-6 bg-green-700 rounded-full p-1.5 shadow-md z-10">
+            {/* Add button on bottom right (protein) */}
+            <button className="absolute bottom-6 right-1/3 transform translate-x-1/2 bg-green-700 rounded-full p-1.5 shadow-md z-10">
               <Plus className="w-5 h-5 text-white" />
             </button>
           </div>
