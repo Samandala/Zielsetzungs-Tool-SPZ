@@ -66,7 +66,7 @@ const Index = () => {
       <Header />
       
       <main className="flex-1 container px-4 mx-auto pb-24">
-        {/* Main content section - renamed from TERMINE to MEINE ZIELE */}
+        {/* Main content section - MEINE ZIELE */}
         <div className="mt-4 bg-white rounded-lg shadow-sm overflow-hidden">
           <div className="bg-navy p-4">
             <h2 className="text-white text-2xl font-bold uppercase">MEINE ZIELE</h2>
@@ -77,6 +77,16 @@ const Index = () => {
               onUpdateProgress={handleUpdateProgress}
               onAddGoal={handleAddGoal}
             />
+          </div>
+        </div>
+        
+        {/* Mein Fortschritt section with same styling as Meine Ziele */}
+        <div className="mt-4 bg-white rounded-lg shadow-sm overflow-hidden">
+          <div className="bg-navy p-4">
+            <h2 className="text-white text-2xl font-bold uppercase">MEIN FORTSCHRITT</h2>
+          </div>
+          <div className="p-4">
+            <GoalProgress goals={goals} />
           </div>
         </div>
       </main>

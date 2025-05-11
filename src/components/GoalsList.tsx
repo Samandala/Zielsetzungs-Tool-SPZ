@@ -1,4 +1,3 @@
-
 import React from 'react';
 import GoalItem, { Goal } from './GoalItem';
 import { Plus, BarChart2, Calendar, Coffee } from 'lucide-react';
@@ -19,12 +18,11 @@ const GoalsList: React.FC<GoalsListProps> = ({ goals, onUpdateProgress, onAddGoa
   return (
     <section className="mt-4 md:mt-6">
       <div className="flex justify-between items-center mb-3">
-        <h2 className="text-xl md:text-2xl font-bold text-primary">Meine Ziele</h2>
         <Button 
           onClick={onAddGoal} 
           variant="outline" 
           size="sm" 
-          className="rounded-full h-8 w-8 p-0 flex items-center justify-center border-primary text-primary"
+          className="rounded-full h-8 w-8 p-0 flex items-center justify-center border-primary text-primary ml-auto"
         >
           <Plus size={18} />
         </Button>
