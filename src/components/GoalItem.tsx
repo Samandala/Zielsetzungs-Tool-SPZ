@@ -43,15 +43,15 @@ const GoalItem: React.FC<GoalItemProps> = ({ goal, onUpdateProgress }) => {
           <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white ${getColorByCategory()}`}>
             {goal.icon}
           </div>
-          <div>
-            <h3 className="font-medium text-foreground">{goal.title}</h3>
+          <div className="flex-1">
+            <h3 className="font-medium text-foreground text-sm">{goal.title}</h3>
             {goal.frequency && (
               <p className="text-xs text-muted-foreground">{goal.frequency}</p>
             )}
           </div>
         </div>
         <div className="flex items-center">
-          <span className="mr-1 font-medium text-sm">
+          <span className="mr-1 font-medium text-sm bg-gray-200 px-2 py-1 rounded-md">
             {goal.progress}%
           </span>
           <ChevronRight size={16} className="text-muted-foreground" />

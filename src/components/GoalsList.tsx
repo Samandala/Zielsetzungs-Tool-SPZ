@@ -30,9 +30,9 @@ const GoalsList: React.FC<GoalsListProps> = ({ goals, onUpdateProgress, onAddGoa
         </Button>
       </div>
       
-      {/* Motivation quote */}
-      <div className="mb-4 md:mb-6 p-3 md:p-4 bg-white rounded-xl shadow-sm border-l-4 border-accent">
-        <p className="text-sm italic text-foreground">
+      {/* Motivation quote with enhanced styling */}
+      <div className="mb-4 md:mb-6 p-3 md:p-4 bg-gradient-to-r from-navy/10 to-navy/5 rounded-xl shadow-sm border-l-4 border-navy">
+        <p className="text-sm italic text-navy font-medium">
           "Jede Bewegung bringt dich deinem neuen Ich näher - egal wie klein der Schritt ist."
         </p>
       </div>

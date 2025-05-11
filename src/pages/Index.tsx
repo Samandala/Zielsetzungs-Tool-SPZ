@@ -66,19 +66,10 @@ const Index = () => {
       <Header />
       
       <main className="flex-1 container px-4 mx-auto pb-24">
-        {/* Login prompt section similar to the screenshot */}
-        <div className="mt-4 p-4 bg-white rounded-lg shadow-sm">
-          <h3 className="text-navy font-medium mb-1">Sie sind abgemeldet</h3>
-          <p className="text-navy text-lg font-medium mb-3">
-            Melden Sie sich mit SwissID an, um alle Funktionen nutzen zu können
-          </p>
-          <Button className="w-full bg-navy hover:bg-navy-light">Anmelden</Button>
-        </div>
-        
-        {/* Main content section */}
+        {/* Main content section - renamed from TERMINE to MEINE ZIELE */}
         <div className="mt-4 bg-white rounded-lg shadow-sm overflow-hidden">
           <div className="bg-navy p-4">
-            <h2 className="text-white text-2xl font-bold uppercase">TERMINE</h2>
+            <h2 className="text-white text-2xl font-bold uppercase">MEINE ZIELE</h2>
           </div>
           <div className="p-4">
             <GoalsList 
@@ -86,16 +77,6 @@ const Index = () => {
               onUpdateProgress={handleUpdateProgress}
               onAddGoal={handleAddGoal}
             />
-          </div>
-        </div>
-        
-        {/* Inbox section */}
-        <div className="mt-4 bg-white rounded-lg shadow-sm overflow-hidden mb-20">
-          <div className="bg-navy p-4">
-            <h2 className="text-white text-2xl font-bold uppercase">INBOX</h2>
-          </div>
-          <div className="p-4 flex items-center justify-center min-h-[200px]">
-            <p className="text-gray-400">Keine neuen Nachrichten</p>
           </div>
         </div>
       </main>
