@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import GoalsList from '../components/GoalsList';
 import GoalProgress from '../components/GoalProgress';
-import KnowledgeSection from '../components/KnowledgeSection';
 import { Coffee } from 'lucide-react';
 import { Goal } from '../components/GoalItem';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
@@ -74,8 +73,6 @@ const Index = () => {
         />
         
         <GoalProgress goals={goals} />
-        
-        <KnowledgeSection />
       </main>
 
       {/* Dialog for adding new goals */}
