@@ -34,6 +34,7 @@ const GoalProgress: React.FC<GoalProgressProps> = ({ goals }) => {
               {averageProgress}%
             </p>
           </div>
+          {/* Changed from oval to fully round circle */}
           <div className="w-16 h-16 rounded-full border-4 border-navy flex items-center justify-center">
             <span className="text-xl font-bold text-navy">{goals.length}/5</span>
           </div>

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import GoalItem, { Goal } from './GoalItem';
 import { Plus, BarChart2, Calendar, Coffee } from 'lucide-react';
@@ -17,6 +18,13 @@ const GoalsList: React.FC<GoalsListProps> = ({ goals, onUpdateProgress, onAddGoa
   
   return (
     <section className="mt-4 md:mt-6">
+      {/* Motivation quote with enhanced styling - MOVED UP */}
+      <div className="mb-4 md:mb-6 p-3 md:p-4 bg-gradient-to-r from-navy/10 to-navy/5 rounded-xl shadow-sm border-l-4 border-navy">
+        <p className="text-sm italic text-navy font-medium">
+          "Jede Bewegung bringt dich deinem neuen Ich näher - egal wie klein der Schritt ist."
+        </p>
+      </div>
+      
       <div className="flex justify-between items-center mb-3">
         <Button 
           onClick={onAddGoal} 
@@ -26,13 +34,6 @@ const GoalsList: React.FC<GoalsListProps> = ({ goals, onUpdateProgress, onAddGoa
         >
           <Plus size={18} />
         </Button>
-      </div>
-      
-      {/* Motivation quote with enhanced styling */}
-      <div className="mb-4 md:mb-6 p-3 md:p-4 bg-gradient-to-r from-navy/10 to-navy/5 rounded-xl shadow-sm border-l-4 border-navy">
-        <p className="text-sm italic text-navy font-medium">
-          "Jede Bewegung bringt dich deinem neuen Ich näher - egal wie klein der Schritt ist."
-        </p>
       </div>
       
       <Tabs defaultValue="progress" className="w-full">
