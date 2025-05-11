@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import GoalsList from '../components/GoalsList';
 import GoalProgress from '../components/GoalProgress';
-import { Coffee } from 'lucide-react';
+import { Home, Calendar, Mail, Users, Menu } from 'lucide-react';
 import { Goal } from '../components/GoalItem';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Button } from '@/components/ui/button';
@@ -62,18 +62,67 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-gray-100 text-foreground flex flex-col">
       <Header />
       
-      <main className="container px-4 mx-auto pb-24">
-        <GoalsList 
-          goals={goals} 
-          onUpdateProgress={handleUpdateProgress}
-          onAddGoal={handleAddGoal}
-        />
+      <main className="flex-1 container px-4 mx-auto pb-24">
+        {/* Login prompt section similar to the screenshot */}
+        <div className="mt-4 p-4 bg-white rounded-lg shadow-sm">
+          <h3 className="text-navy font-medium mb-1">Sie sind abgemeldet</h3>
+          <p className="text-navy text-lg font-medium mb-3">
+            Melden Sie sich mit SwissID an, um alle Funktionen nutzen zu können
+          </p>
+          <Button className="w-full bg-navy hover:bg-navy-light">Anmelden</Button>
+        </div>
         
-        <GoalProgress goals={goals} />
+        {/* Main content section */}
+        <div className="mt-4 bg-white rounded-lg shadow-sm overflow-hidden">
+          <div className="bg-navy p-4">
+            <h2 className="text-white text-2xl font-bold uppercase">TERMINE</h2>
+          </div>
+          <div className="p-4">
+            <GoalsList 
+              goals={goals} 
+              onUpdateProgress={handleUpdateProgress}
+              onAddGoal={handleAddGoal}
+            />
+          </div>
+        </div>
+        
+        {/* Inbox section */}
+        <div className="mt-4 bg-white rounded-lg shadow-sm overflow-hidden mb-20">
+          <div className="bg-navy p-4">
+            <h2 className="text-white text-2xl font-bold uppercase">INBOX</h2>
+          </div>
+          <div className="p-4 flex items-center justify-center min-h-[200px]">
+            <p className="text-gray-400">Keine neuen Nachrichten</p>
+          </div>
+        </div>
       </main>
+
+      {/* Bottom navigation bar */}
+      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around items-center py-2">
+        <a href="#" className="flex flex-col items-center p-2 text-navy">
+          <Home size={24} />
+          <span className="text-xs mt-1">Home</span>
+        </a>
+        <a href="#" className="flex flex-col items-center p-2 text-gray-400">
+          <Calendar size={24} />
+          <span className="text-xs mt-1">Timeline</span>
+        </a>
+        <a href="#" className="flex flex-col items-center p-2 text-gray-400">
+          <Mail size={24} />
+          <span className="text-xs mt-1">Posteingang</span>
+        </a>
+        <a href="#" className="flex flex-col items-center p-2 text-gray-400">
+          <Users size={24} />
+          <span className="text-xs mt-1">Partner</span>
+        </a>
+        <a href="#" className="flex flex-col items-center p-2 text-gray-400">
+          <Menu size={24} />
+          <span className="text-xs mt-1">Menu</span>
+        </a>
+      </nav>
 
       {/* Dialog for adding new goals */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
@@ -129,7 +178,7 @@ const Index = () => {
             </div>
           </div>
           <DialogFooter>
-            <Button type="submit" onClick={handleDialogClose}>Ziel hinzufügen</Button>
+            <Button type="submit" onClick={handleDialogClose} className="bg-navy hover:bg-navy-light">Ziel hinzufügen</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

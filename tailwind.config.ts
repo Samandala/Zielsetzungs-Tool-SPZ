@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,12 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Add custom navy color to match the screenshot
+				navy: {
+					DEFAULT: '#003b71', // dark navy blue
+					light: '#004c8c',
+					dark: '#00264d',
 				}
 			},
 			borderRadius: {
