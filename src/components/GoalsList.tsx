@@ -21,7 +21,8 @@ interface GoalsListProps {
 const GoalsList: React.FC<GoalsListProps> = ({ goals, onUpdateProgress, onAddGoal }) => {
   const isMobile = useIsMobile();
   const [reminders, setReminders] = useState<{day: string, time: string, active: boolean}[]>([
-    { day: 'Mon', time: '9:00 AM', active: true },
+    { day: 'Mon', time: '09:00 Uhr', active: true },
+    { day: 'Wed', time: '13:00 Uhr', active: true },
   ]);
   const [showReminderDrawer, setShowReminderDrawer] = useState(false);
   const [selectedDay, setSelectedDay] = useState('Mon');
@@ -63,17 +64,6 @@ const GoalsList: React.FC<GoalsListProps> = ({ goals, onUpdateProgress, onAddGoa
         </p>
       </div>
       
-      <div className="flex justify-between items-center mb-3">
-        <Button 
-          onClick={onAddGoal} 
-          variant="outline" 
-          size="sm" 
-          className="rounded-full h-8 w-8 p-0 flex items-center justify-center border-primary text-primary ml-auto"
-        >
-          <Plus size={18} />
-        </Button>
-      </div>
-      
       <Tabs defaultValue="progress" className="w-full">
         <TabsList className="grid grid-cols-4 mb-4 w-full">
           <TabsTrigger value="progress">Fortschritt</TabsTrigger>
@@ -83,6 +73,17 @@ const GoalsList: React.FC<GoalsListProps> = ({ goals, onUpdateProgress, onAddGoa
         </TabsList>
         
         <TabsContent value="progress" className="space-y-3 md:space-y-4">
+          <div className="flex justify-between items-center mb-3">
+            <Button 
+              onClick={onAddGoal} 
+              variant="outline" 
+              size="sm" 
+              className="rounded-full h-8 w-8 p-0 flex items-center justify-center border-primary text-primary ml-auto"
+            >
+              <Plus size={18} />
+            </Button>
+          </div>
+          
           {goals.map((goal) => (
             <GoalItem key={goal.id} goal={goal} onUpdateProgress={onUpdateProgress} />
           ))}
