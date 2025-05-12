@@ -1,11 +1,16 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import GoalItem, { Goal } from './GoalItem';
-import { Plus, BarChart2, Calendar, Coffee } from 'lucide-react';
+import { Plus, BarChart2, Calendar, Coffee, AlarmClock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent } from '@/components/ui/card';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { Switch } from '@/components/ui/switch';
+import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from '@/components/ui/drawer';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
 
 interface GoalsListProps {
   goals: Goal[];
@@ -15,6 +20,39 @@ interface GoalsListProps {
 
 const GoalsList: React.FC<GoalsListProps> = ({ goals, onUpdateProgress, onAddGoal }) => {
   const isMobile = useIsMobile();
+  const [reminders, setReminders] = useState<{day: string, time: string, active: boolean}[]>([
+    { day: 'Mon', time: '9:00 AM', active: true },
+  ]);
+  const [showReminderDrawer, setShowReminderDrawer] = useState(false);
+  const [selectedDay, setSelectedDay] = useState('Mon');
+  const [selectedTime, setSelectedTime] = useState('9:00');
+  
+  // German day name mapping
+  const dayNameMap: Record<string, string> = {
+    'Mon': 'Mo',
+    'Tue': 'Di',
+    'Wed': 'Mi',
+    'Thu': 'Do', 
+    'Fri': 'Fr',
+    'Sat': 'Sa',
+    'Sun': 'So'
+  };
+  
+  const addReminder = () => {
+    const newReminder = {
+      day: selectedDay,
+      time: selectedTime,
+      active: true
+    };
+    setReminders([...reminders, newReminder]);
+    setShowReminderDrawer(false);
+  };
+  
+  const toggleReminderActive = (index: number) => {
+    const updatedReminders = [...reminders];
+    updatedReminders[index].active = !updatedReminders[index].active;
+    setReminders(updatedReminders);
+  };
   
   return (
     <section className="mt-4 md:mt-6">
@@ -37,10 +75,11 @@ const GoalsList: React.FC<GoalsListProps> = ({ goals, onUpdateProgress, onAddGoa
       </div>
       
       <Tabs defaultValue="progress" className="w-full">
-        <TabsList className="grid grid-cols-3 mb-4 w-full">
+        <TabsList className="grid grid-cols-4 mb-4 w-full">
           <TabsTrigger value="progress">Fortschritt</TabsTrigger>
           <TabsTrigger value="calendar">Kalender</TabsTrigger>
           <TabsTrigger value="calories">Kalorien</TabsTrigger>
+          <TabsTrigger value="reminder">Reminder</TabsTrigger>
         </TabsList>
         
         <TabsContent value="progress" className="space-y-3 md:space-y-4">
@@ -97,7 +136,7 @@ const GoalsList: React.FC<GoalsListProps> = ({ goals, onUpdateProgress, onAddGoa
                 <div>
                   <div className="flex justify-between text-sm mb-1">
                     <span>Tagesbedarf</span>
-                    <span>1600 kcal</span>
+                    <span>1500 kcal</span>
                   </div>
                   <div className="flex justify-between text-sm mb-1">
                     <span>Bereits gegessen</span>
@@ -105,18 +144,102 @@ const GoalsList: React.FC<GoalsListProps> = ({ goals, onUpdateProgress, onAddGoa
                   </div>
                   <div className="flex justify-between text-sm font-semibold">
                     <span>Noch verfügbar</span>
-                    <span>500 kcal</span>
+                    <span>400 kcal</span>
                   </div>
                 </div>
                 
                 <div className="w-full bg-muted h-3 md:h-4 rounded-full overflow-hidden">
                   <div 
                     className="h-full bg-primary"
-                    style={{ width: '68%' }}
+                    style={{ width: '73%' }}
                   ></div>
                 </div>
                 
                 <Button className="w-full">Mahlzeit hinzufügen</Button>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+        
+        <TabsContent value="reminder">
+          <Card className="shadow-sm">
+            <CardContent className="p-3 md:p-4">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="font-semibold text-primary">Reminder</h3>
+                <Drawer open={showReminderDrawer} onOpenChange={setShowReminderDrawer}>
+                  <DrawerTrigger asChild>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="rounded-full h-8 w-8 p-0 flex items-center justify-center border-primary text-primary"
+                    >
+                      <Plus size={18} />
+                    </Button>
+                  </DrawerTrigger>
+                  <DrawerContent>
+                    <DrawerHeader className="text-left">
+                      <DrawerTitle>Reminder erstellen</DrawerTitle>
+                    </DrawerHeader>
+                    <div className="p-4 pt-0">
+                      <div className="mb-4">
+                        <h4 className="text-sm font-medium mb-2">Wochentag auswählen</h4>
+                        <div className="grid grid-cols-4 gap-2">
+                          {Object.entries(dayNameMap).map(([eng, ger]) => (
+                            <Button 
+                              key={eng}
+                              variant={selectedDay === eng ? "default" : "outline"} 
+                              className="text-sm py-1"
+                              onClick={() => setSelectedDay(eng)}
+                            >
+                              {ger}
+                            </Button>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      <div className="mb-6">
+                        <h4 className="text-sm font-medium mb-2">Uhrzeit auswählen</h4>
+                        <div className="flex space-x-2 items-center">
+                          <Input 
+                            type="time" 
+                            value={selectedTime}
+                            onChange={(e) => setSelectedTime(e.target.value)}
+                            className="flex-1"
+                          />
+                        </div>
+                      </div>
+                      
+                      <div className="flex justify-between">
+                        <Button variant="outline" onClick={() => setShowReminderDrawer(false)}>
+                          Abbrechen
+                        </Button>
+                        <Button onClick={addReminder}>
+                          Speichern
+                        </Button>
+                      </div>
+                    </div>
+                  </DrawerContent>
+                </Drawer>
+              </div>
+              
+              <div className="space-y-3">
+                {reminders.map((reminder, index) => (
+                  <div key={index} className="flex items-center justify-between bg-blue-50 p-3 rounded-lg">
+                    <div className="flex items-center">
+                      <div className="bg-navy text-white p-2 rounded-full mr-3">
+                        <AlarmClock size={20} />
+                      </div>
+                      <div>
+                        <p className="text-navy font-medium">{dayNameMap[reminder.day]}</p>
+                        <p className="text-sm text-gray-500">{reminder.time}</p>
+                      </div>
+                    </div>
+                    <Switch 
+                      checked={reminder.active}
+                      onCheckedChange={() => toggleReminderActive(index)}
+                    />
+                  </div>
+                ))}
               </div>
             </CardContent>
           </Card>
